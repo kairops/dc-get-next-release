@@ -36,7 +36,6 @@ function calculateNextReleaseNumber () {
         itemToIncrease="patch"
         for commit in $commitList; do
             type=$(echo $commit|awk '{print $2}')
-        echo $type
             if [ "$type" == "New:" ] || [ "$type" == "Upgrade:" ] || [ "$type" == "Update:" ]; then
                 if [ "$itemToIncrease" == "patch" ]; then
                     itemToIncrease="minor"
