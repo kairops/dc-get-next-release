@@ -3,7 +3,7 @@
 @Library('github.com/red-panda-ci/jenkins-pipeline-library@v2.7.0') _
 
 // Initialize global config
-cfg = jplConfig('dc-next-release-number', 'bash', '', [slack: '#integrations', email:'redpandaci+dc-next-release-number@gmail.com'])
+cfg = jplConfig('dc-get-next-release-number', 'bash', '', [slack: '#integrations', email:'redpandaci+dc-get-next-release-number@gmail.com'])
 
 pipeline {
     agent none
@@ -19,7 +19,7 @@ pipeline {
             agent { label 'docker' }
             steps {
                 script {
-                    jplDockerPush (cfg, "kairops/dc-next-release-number", "test", ".", "https://registry.hub.docker.com", "cikairos-docker-credentials")
+                    jplDockerPush (cfg, "kairops/dc-get-next-release-number", "test", ".", "https://registry.hub.docker.com", "cikairos-docker-credentials")
                 }
             }
         }
@@ -39,8 +39,8 @@ pipeline {
             agent { label 'master' }
             when { expression { (cfg.BRANCH_NAME.startsWith('release/v') || cfg.BRANCH_NAME.startsWith('hotfix/v')) && cfg.promoteBuild.enabled } }
             steps {
-                jplDockerPush (cfg, "kairops/dc-next-release-number", cfg.releaseTag, ".", "https://registry.hub.docker.com", "cikairos-docker-credentials")
-                jplDockerPush (cfg, "kairops/dc-next-release-number", "latest", ".", "https://registry.hub.docker.com", "cikairos-docker-credentials")
+                jplDockerPush (cfg, "kairops/dc-get-next-release-number", cfg.releaseTag, ".", "https://registry.hub.docker.com", "cikairos-docker-credentials")
+                jplDockerPush (cfg, "kairops/dc-get-next-release-number", "latest", ".", "https://registry.hub.docker.com", "cikairos-docker-credentials")
                 jplCloseRelease(cfg)
             }
         }
