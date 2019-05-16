@@ -14,6 +14,15 @@
 
 set -euo pipefail
 
+function echo_debug () {
+    if [ "$KD_DEBUG" == "1" ]; then
+        echo >&2 ">>>> DEBUG >>>>> $(date "+%Y-%m-%d %H:%M:%S") $KD_NAME: $@"
+    fi
+}
+
+KD_NAME="get-next-release-number"
+echo_debug "begin"
+
 # Calculate next release number
 function calculateNextReleaseNumber () {
     tagFrom=$(git tag|tail -n1)
@@ -35,7 +44,7 @@ function calculateNextReleaseNumber () {
         commitList=$(git log ${tagFrom}..HEAD --no-merges --pretty=format:"%h %s")
         itemToIncrease="patch"
         for commit in $commitList; do
-            type=$(echo $commit|awk '{print $2}')
+            type=$(echo_debug $commit|awk '{print $2}')
             if [ "$type" == "New:" ] || [ "$type" == "Upgrade:" ] || [ "$type" == "Update:" ]; then
                 if [ "$itemToIncrease" == "patch" ]; then
                     itemToIncrease="minor"
@@ -67,3 +76,5 @@ function calculateNextReleaseNumber () {
 }
 
 calculateNextReleaseNumber
+
+echo_debug "end"
