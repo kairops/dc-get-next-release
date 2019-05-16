@@ -12,7 +12,7 @@
 #   Security - for security skills.
 #   Deprecated - for deprecated features.
 
-set -euo pipefail
+set -eo pipefail
 
 function echo_debug () {
     if [ "$KD_DEBUG" == "1" ]; then
