@@ -1,6 +1,20 @@
+<a name="0.2.0"></a>
+# 0.2.0 (2019-05-16)
+
+
+### Update
+
+* Add debug option and command name ([c32c7f4a92d5cec8c8acf4892068ca93aa31e17a](https://github.com/kairops/dc-get-next-release-number/commit/c32c7f4a92d5cec8c8acf4892068ca93aa31e17a))
+
+
+
 <a name="0.1.1"></a>
 ## 0.1.1 (2019-05-13)
 
+
+### Build
+
+* Update CHANGELOG.md to v0.1.1 with Red Panda JPL ([270f3827ad8103f5fd26792f9668de03ec4994f5](https://github.com/kairops/dc-get-next-release-number/commit/270f3827ad8103f5fd26792f9668de03ec4994f5))
 
 ### Fix
 
