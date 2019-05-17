@@ -44,7 +44,7 @@ function calculateNextReleaseNumber () {
         commitList=$(git log ${tagFrom}..HEAD --no-merges --pretty=format:"%h %s")
         itemToIncrease="patch"
         for commit in $commitList; do
-            type=$(echo_debug $commit|awk '{print $2}')
+            type=$(echo $commit|awk '{print $2}')
             if [ "$type" == "New:" ] || [ "$type" == "Upgrade:" ]; then
                 if [ "$itemToIncrease" == "patch" ]; then
                     itemToIncrease="minor"
