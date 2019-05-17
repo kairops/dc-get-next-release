@@ -1,3 +1,17 @@
+* Update CHANGELOG.md to v1.0.0 with Red Panda JPL ([6d229ec](https://github.com:kairops/dc-get-next-release-number/commit/6d229ec))
+
+# Changelog
+
+## v1.0.1 (2019-05-17)
+
+### Fix
+
+* Missplaced stdout ([fb4c64c](https://github.com:kairops/dc-get-next-release-number/commit/fb4c64c))
+
+# Changelog
+
+## v1.0.0 (2019-05-16)
+
 ### Upgrade
 
 * Don't use minor increasing when using 'Update' type ([ce64cde](https://github.com:kairops/dc-get-next-release-number/commit/ce64cde))
@@ -8,6 +22,7 @@
 
 ### Build
 
+* Update CHANGELOG.md to v1.0.0 with Red Panda JPL ([6d229ec](https://github.com:kairops/dc-get-next-release-number/commit/6d229ec))
 * Update to jpl v2.9.1 ([7ce0a36](https://github.com:kairops/dc-get-next-release-number/commit/7ce0a36))
 
 # Changelog
