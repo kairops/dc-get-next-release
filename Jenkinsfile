@@ -15,7 +15,7 @@ pipeline {
                 jplStart(cfg)
             }
         }
-        stage ('Build') {docker
+        stage ('Build') {
             agent { label 'docker' }
             steps {
                 script {
