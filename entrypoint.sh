@@ -25,7 +25,7 @@ echo_debug "begin"
 
 # Calculate next release number
 function calculateNextReleaseNumber () {
-    tagFrom=$(git tag|tail -n1)
+    tagFrom=$(git describe --tags $(git rev-list --tags --max-count=1))
     product_version=$tagFrom
     if [ "$product_version" == "" ]; then
         major="0"
