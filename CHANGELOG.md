@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.0.3 (2019-06-19)
+
+### Fix
+
+* Get the right release number ([3f0eed7](https://github.com/kairops/dc-get-next-release-number/commit/3f0eed7))
+
+### Build
+
+* Update Auto Release Log adding v1.0.3 info with JPL ([b891a6f](https://github.com/kairops/dc-get-next-release-number/commit/b891a6f))
+
+### Docs
+
+* Generate v1.0.2 changelog with JPL ([53c65fb](https://github.com/kairops/dc-get-next-release-number/commit/53c65fb))
+
 ## v1.0.2 (2019-06-13)
 
 ### Build
