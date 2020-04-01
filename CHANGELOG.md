@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.0.4 (2020-04-01)
+
+### Fix
+
+* Return first tag number as v0.1.0 ([09a75a1](https://github.com/kairops/dc-get-next-release-number/commit/09a75a1))
+
+### Build
+
+* Update Auto Release Log adding v1.0.4 info with JPL ([db80abb](https://github.com/kairops/dc-get-next-release-number/commit/db80abb))
+
+### Docs
+
+* Generate v1.0.3 changelog with JPL ([d457a00](https://github.com/kairops/dc-get-next-release-number/commit/d457a00))
+
 ## v1.0.3 (2019-06-19)
 
 ### Fix
