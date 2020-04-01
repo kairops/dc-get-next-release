@@ -25,17 +25,17 @@ echo_debug "begin"
 
 # Calculate next release number
 function calculateNextReleaseNumber () {
-    tagFrom=$(git describe --tags $(git rev-list --tags --max-count=1))
-    product_version=$tagFrom
-    if [ "$product_version" == "" ]; then
+    revList=$(git rev-list --tags --max-count=1)
+    if [ "$revList" == "" ]; then
         major="0"
         minor="1"
         patch="0"
     else
-        semver=( ${product_version//./ } )
-        major="${semver[0]}"
-        minor="${semver[1]}"
-        patch="${semver[2]}"
+        tagFrom=$(git describe --tags $(git rev-list --tags --max-count=1)||true 2> /dev/null)
+        tagArray=( ${tagFrom//./ } )
+        major="${tagArray[0]}"
+        minor="${tagArray[1]}"
+        patch="${tagArray[2]}"
         OLDIFS="$IFS"
         IFS=$'\n' # bash specific
         if [ "${major:0:1}" == "v" ]; then
