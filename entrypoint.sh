@@ -16,7 +16,7 @@ set -eo pipefail
 
 function echo_debug () {
     if [ "$KD_DEBUG" == "1" ]; then
-        echo >&2 ">>>> DEBUG >>>>> $(date "+%Y-%m-%d %H:%M:%S") $KD_NAME: $@"
+        echo >&2 ">>>> DEBUG >>>>> $(date "+%Y-%m-%d %H:%M:%S") $KD_NAME: " "$@"
     fi
 }
 
@@ -25,13 +25,15 @@ echo_debug "begin"
 
 # Calculate next release number
 function calculateNextReleaseNumber () {
-    revList=$(git rev-list --tags --max-count=1)
-    if [ "$revList" == "" ]; then
+    local tagFrom
+    tagFrom=$(git describe --abbrev=0 2> /dev/null || echo '')
+    if [ "$tagFrom" == "" ]; then
         major="0"
         minor="1"
         patch="0"
     else
-        tagFrom=$(git describe --tags $(git rev-list --tags --max-count=1)||true 2> /dev/null)
+#        tagFrom=$(git describe --tags $(git rev-list --tags --max-count=1)||true 2> /dev/null)
+#        read -r -a tagArray <<< "$tagFrom"
         tagArray=( ${tagFrom//./ } )
         major="${tagArray[0]}"
         minor="${tagArray[1]}"
@@ -41,10 +43,10 @@ function calculateNextReleaseNumber () {
         if [ "${major:0:1}" == "v" ]; then
             major=${major:1}
         fi
-        commitList=$(git log ${tagFrom}..HEAD --no-merges --pretty=format:"%h %s")
+        commitList=$(git log "${tagFrom}..HEAD" --no-merges --pretty=format:"%h %s")
         itemToIncrease="patch"
         for commit in $commitList; do
-            type=$(echo $commit|awk '{print $2}')
+            type=$(echo "$commit"|awk '{print $2}')
             if [ "$type" == "New:" ] || [ "$type" == "Upgrade:" ]; then
                 if [ "$itemToIncrease" == "patch" ]; then
                     itemToIncrease="minor"
