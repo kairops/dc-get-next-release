@@ -1,6 +1,6 @@
 # DEPRECATED
 
-Please visit https://github.com/tpbtools/dc-get-next-release-number
+Please visit https://github.com/ayudadigital/dc-get-next-release-number
 
 # Docker Command: Get Next Release Number
 
